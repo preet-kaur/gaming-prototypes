@@ -28,4 +28,19 @@ public class PlayerScript : MonoBehaviour
         //Smooth left & right movement - use speed
         rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);   //set speed of rigid body of player for horizontal mvmt
     }
+
+
+    public GameObject[] playerGameObjList;
+
+    void Awake()
+    {
+        playerGameObjList = GameObject.FindGameObjectsWithTag("Player");
+        if (playerGameObjList.Length > 1)
+        {
+            Destroy(this.gameObject);
+        }
+        Debug.Log("length: " + playerGameObjList.Length);
+        DontDestroyOnLoad(this.gameObject);
+    }
+
 }

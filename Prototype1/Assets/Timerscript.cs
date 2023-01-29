@@ -5,12 +5,15 @@ using UnityEngine.UI;
 
 public class Timerscript : MonoBehaviour
 {
-    public float timeValue = 90;
+    public static float timeValue = 10;
     public Text timeText;
+    public GameManagerScript gameManagerScript;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        gameManagerScript = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManagerScript>();
+        Debug.Log("Script: " + gameManagerScript);
     }
 
     // Update is called once per frame
@@ -24,7 +27,14 @@ public class Timerscript : MonoBehaviour
         {
             timeValue = 0;
         }
+        Debug.Log("timeValue: " + timeValue);
         displayTime(timeValue);
+        if(timeValue == 0)
+        {
+            //trigger game over screen
+            Debug.Log("timeValue inside if: " + timeValue);
+            gameManagerScript.GameOver();
+        }
 
     }
 

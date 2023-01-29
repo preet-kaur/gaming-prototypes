@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Timer2Script : MonoBehaviour
 {
-    public float timeValue = 30;
+    public float timeValue = 10;
     public Text timeText;
     // Start is called before the first frame update
     void Start()
